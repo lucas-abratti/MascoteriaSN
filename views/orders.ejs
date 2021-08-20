@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head', {title: 'Pedidos'}) %>
+
+
+
+<body>
+    <%- include('./partials/header') %> 
+    <main>
+        <h1>PEDIDOS <%= orders.length %> </h1>
+        <% orders.forEach(order=> { %>
+            <%- include('./partials/order-list-item.ejs', {fullOrder: order}) %> 
+        <% }) %>
+    </main>   
+</body>
+</html>

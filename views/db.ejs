@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head', {title: 'Home' }) %>
+
+        <body>
+            <%- include('./partials/header') %>
+            
+            <main>
+                <a href="/usuarios">
+                    <h1>USUARIOS <%=users.length%>
+                    </h1>
+                </a>
+                <ul class="users-list">
+                    <% users.forEach(user=> { %>
+                        <%- include('./partials/user-list-item', {user: user}) %>
+                            <% }) %>
+                </ul>
+                <a href="/categorias">
+                    <h1>CATEGORIAS <%=categories.length%>
+                    </h1>
+                </a>
+                <ul class="categories-list">
+                    <% categories.forEach(category=> { %>
+                        <%- include('./partials/category-list-item', {category: category}) %>
+                            <% }) %>
+                </ul>
+                <a href="/marcas">
+                    <h1>MARCAS <%=brands.length%>
+                    </h1>
+                </a>
+                <ul class="categories-list">
+                    <% brands.forEach(brand=> { %>
+                        <%- include('./partials/brand-list-item', {brand: brand}) %>
+                            <% }) %>
+                </ul>
+                <a href="/productos">
+                    <h1>PRODUCTOS <%=products.length%>
+                    </h1>
+                </a>
+                <ul class="products-list">
+                    <% products.forEach(product=> { %>
+                        <%- include('./partials/product-list-item', {product: product}) %>
+                    <% }) %>
+                </ul>
+
+            </main>
+        </body>
+
+</html>

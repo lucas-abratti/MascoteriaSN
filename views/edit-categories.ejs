@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head', {title: 'Editar una categoria'}) %>
+<body>
+    <%- include('./partials/header') %>
+    <main>
+        <ul class="categories-list">
+        <% categories.forEach(category=> { %>
+            <form action="/categorias/editar-categoria/<%= category.id %>" method="get">
+                <button type="submit"><h2>Editar <%= category.alias %></h2></button>
+            </form>
+            <form action="/categorias/borrar-categoria/<%= category.id %>" method="POST">
+                <button type="submit"><h2>Borrar <%= category.alias %></h2></button>
+            </form>
+            <hr>
+        <% }) %>
+    </ul>
+    </main>
+</body>
+</html>

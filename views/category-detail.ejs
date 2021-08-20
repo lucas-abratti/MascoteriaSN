@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head', {title: 'Detalle de categoria' }) %>
+    <body>
+        <%- include('./partials/header') %>
+            <main>
+                <h1>Categoria: <%= categories[category_id - 1].alias %>
+                </h1>
+
+                <h2>Productos en esta categoria <%=products.length%>
+                </h2>
+                <ul class="products-list">
+                    <% products.forEach(product=> { %>
+                        <%- include('./partials/product-list-item', {product: product}) %>
+                            <% }) %>
+                </ul>
+            </main>
+    </body>
+</html>

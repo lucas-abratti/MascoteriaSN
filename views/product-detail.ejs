@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head', {title: 'Detalle de Producto'}) %>
+<link rel="stylesheet" href="/stylesheets/product-detail.css">
+
+
+    <body>
+        <%- include('./partials/header') %>
+        <main>
+            <h1 class="prod-card"><%= product.alias %> </h1>
+            <div class="prod-card">
+                <div class="img-desc">
+                    <% if (product.img) { %>
+                        <img src="/images/<%= product.img %>" alt="">
+                    <% } %>
+                    <span>
+                        <h3>Descripcion</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit dignissim risus imperdiet faucibus viverra, himenaeos luctus aliquam aptent mattis platea lectus varius ad eu nam habitasse rutrum, placerat fusce quisque sociis eleifend conubia penatibus erat vehicula dui metus. Quam inceptos ac nulla malesuada convallis ligula pellentesque dapibus, sem ad purus mus vel nostra nisi, placerat hac viverra porta lacinia volutpat ut. Blandit placerat malesuada iaculis venenatis facilisi torquent auctor euismod, porta convallis orci eu id quam dapibus suspendisse, nunc interdum curae suscipit aenean semper mollis. Interdum urna nunc auctor tempor vivamus vestibulum, libero tincidunt felis enim sodales magnis sem, morbi aliquet magna leo conubia.
+
+                            Aliquam urna risus rhoncus hendrerit malesuada cursus dictum cubilia nostra, id magna at mi senectus justo sagittis morbi. Litora lacinia nisi arcu ornare class sed proin, facilisis inceptos condimentum dictumst porttitor magna, dignissim porta rhoncus consequat montes rutrum. Ornare dis nam vulputate proin lacus netus ac diam habitant, molestie duis dictum montes pretium orci quisque tempus, aptent leo parturient at placerat etiam metus himenaeos.<%= product.info %></p>
+                    
+                        <p><a href="/marcas/detalle-de-marca/<%=brands[product.brand_id - 1].id%>">
+                            Marca: <%= brands[product.brand_id - 1].alias %>
+                        </a></p>
+                    </span>
+                </div>
+                <span class="buying-options">
+                    <div class="buying-option">
+                        <h3>Precio por KG <%= product.price_kg %>$</h3>
+                        <form action="" method="post">
+                            <label for="order_kg">Comprar</label>
+                            <input type="number" name="order_kg" id="order_kg" value="0">
+                            <label>kg</label>
+                            <button type="submit">✅Agregar al pedido✅</button>
+                        </form>
+                    </div>
+                    <div class="buying-option">
+                        <h3>Bolsa en efectivo(<%= product.weight %>kg) <%= product.price_bagCash %>$</h3>
+                        <form action="" method="post">
+                            <label for="order_bagCash">Comprar</label>
+                            <input type="number" name="order_bagCash" id="order_bagCash" value="0">
+                            <label>bolsas</label>
+                            <button type="submit">✅Agregar al pedido✅</button>
+                        </form>
+                    </div>
+                    <div class="buying-option">
+                        <h3>Bolsa con Credito/Debito(<%= product.weight %>kg) <%= product.price_bagCard %>$</h3>
+                        <form action="" method="post">
+                            <label for="order_bagCard">Comprar</label>
+                            <input type="number" name="order_bagCard" id="order_bagCard" value="0">
+                            <label>bolsas</label>
+                            <button type="submit">✅Agregar al pedido✅</button>
+                        </form>
+                    </div>
+                </span>
+            </div>
+        </main>
+    </body>
+
+</html>

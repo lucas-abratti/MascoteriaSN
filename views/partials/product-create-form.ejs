@@ -1,0 +1,53 @@
+<form action="/productos/crear-producto" method="post">
+
+    <section>
+
+        <h1>Crear Producto</h1>
+        <p>
+            <label for="alias">Nombre del Producto</label>
+            <input type="text" name="alias" id="alias" placeholder="Nombre del Producto">
+        </p>
+
+        <p>
+            <label for="price_kg">Precio por Kg</label>
+            <input type="number" name="price_kg" id="price_kg" placeholder="Precio">
+        </p>
+        <p>
+            <label for="price_bagCash">Precio por Bolsa en efectivo</label>
+            <input type="number" name="price_bagCash" id="price_bagCash">
+        </p>
+        <p>
+            <label for="price_bagCard">Precio por Bolsa con tarjeta (Credito/Debito)</label>
+            <input type="number" name="price_bagCard" id="price_bagCard">
+        </p>
+        <p>
+            <label for="category_id">Categoria</label>
+            <select name="category_id" id="category_id">
+                <% for( let i=0; i < categories.length; i++ ) { %>
+                    <option value="<%= categories[i].id %>">
+                        <%= categories[i].alias %>
+                    </option>
+                    <% } %>
+            </select>
+        </p>
+
+        <p>
+            <label for="brand_id">Marca</label>
+            <select name="brand_id" id="brand_id">
+                <% for( let i=0; i < brands.length; i++ ) { %>
+                    <option value="<%= brands[i].id %>">
+                        <%= brands[i].alias %>
+                    </option>
+                    <% } %>
+            </select>
+        </p>
+
+
+        <p>
+            <input value="Crear!" type="submit" id="submit">
+            <input type="reset" id="reset">
+        </p>
+
+
+    </section>
+</form>

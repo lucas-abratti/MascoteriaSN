@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head', {title: 'Detalle de usuarios'}) %>
+
+    <body>
+<%- include('./partials/header') %>
+        <main>
+            <h1>USUARIO N* <%= user.id %></h1>
+        <%- include('./partials/user-list-item.ejs', {user: user}) %>   
+        </main>
+    </body>
+
+</html>

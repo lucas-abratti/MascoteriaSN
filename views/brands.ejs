@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head', {title: 'Marcas'}) %>
+
+
+<body>
+    <%- include('./partials/header') %> 
+    <main>
+        <h1>MARCAS <%= brands.length %> </h1>
+        <ul>
+            <% brands.forEach(brand=> { %>
+                <%- include('./partials/brand-list-item', {brand: brand}) %>
+            <% }) %>
+        </ul> 
+    </main>
+       
+</body>
+</html>

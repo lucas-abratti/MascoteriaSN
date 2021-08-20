@@ -1,0 +1,38 @@
+<li class="products-list-item">
+    <a href="/productos/detalle-de-producto/<%=product.id%>">
+        <p class="alias">
+            <%= product.alias %>
+        </p>
+        <% if (product.img != null) { %>
+            <img src="/images/<%= product.img %>" alt="" height="150px">
+        <% } %>
+        <p>
+            <h2>Precio</h2>
+            <p>
+                <%= product.price_kg %>$ por Kg
+            </p>
+            <p>
+                <%= product.price_bagCash %>$ por Bolsa en efectivo
+            </p>
+            <p>
+                <%= product.price_bagCard %>$ por Bolsa con tarjeta (Credito/Debito)
+            </p>
+        </p>
+        <p>
+            <a href="/marcas/detalle-de-marca/<%=brands[product.brand_id - 1].id%>">
+                Marca: <%= brands[product.brand_id - 1].alias %>
+            </a>
+        </p>
+        <p>
+            <a href="/categorias/detalle-de-categoria/<%=categories[product.category_id - 1].id%>">
+                <%= categories[product.category_id - 1].alias %>
+            </a>
+        </p>
+        <form action="/productos/editar-producto/<%= product.id %>" method="get">
+            <button class="edit-button" type="submit">Editar</button>
+        </form>
+        <form action="/productos/borrar-producto/<%= product.id %>" method="post">
+            <button class="edit-button" type="submit">Borrar</button>
+        </form>
+    </a>
+</li>

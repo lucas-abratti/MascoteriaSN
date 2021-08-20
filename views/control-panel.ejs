@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head', {title: 'Panel de control'}) %>
+    <body>
+        <%- include('./partials/header') %>
+        <main>
+        <h1>Crear</h1>
+        <%- include('./partials/product-create-form') %>
+        <%- include('./partials/user-create-form') %>
+        <%- include('./partials/category-create-form') %>
+        <%- include('./partials/brand-create-form') %>
+        <h1>Editar</h1>
+        <a href="/editar-productos"><h2>Editar un producto</h2></a>
+        <a href="/editar-categorias"><h2>Editar una categoria</h2></a>
+        <a href="/editar-marcas"><h2>Editar una marca</h2></a>
+        </main>
+    </body>
+</html>

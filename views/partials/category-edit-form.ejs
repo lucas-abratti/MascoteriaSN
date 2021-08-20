@@ -1,0 +1,17 @@
+<form action="/categorias/editar-categoria/<%= category.id %>" method="post">
+
+    <section>
+
+        <h1>Editar Categoria <%= category.alias %></h1>
+        <p>
+            <label for="alias">Nombre de Categoria</label>
+            <input type="text" name="alias" id="alias" value="<%= category.alias %> ">
+        </p>
+        <p class="form-buttons">
+            <input value="Editar" type="submit" class="rs-form" id="submit">
+            <input type="reset" class="rs-form" id="reset">
+        </p>
+
+
+    </section>
+</form>

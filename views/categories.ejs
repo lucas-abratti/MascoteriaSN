@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head', {title: 'Categorias'}) %>
+
+<body>
+    <%- include('./partials/header') %> 
+    <main>
+        <h1>CATEGORIAS</h1>
+    <ul>
+        <% categories.forEach(category=> { %>
+            <%- include('./partials/category-list-item', {category: category}) %>
+        <% }) %>
+    </ul>  
+    </main>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head', {title: 'Editar una marca' }) %>
+
+    <body>
+        <%- include('./partials/header') %>
+            <main>
+                <ul class="brands-list">
+                    <% brands.forEach(brand=> { %>
+                        <form action="/marcas/editar-marca/<%= brand.id %>" method="GET">
+                            <button type="submit">
+                                <h2>Editar <%= brand.alias %>
+                                </h2>
+                            </button>
+                        </form>
+                        <form action="/marcas/borrar-marca/<%= brand.id %>" method="POST">
+                            <button type="submit">
+                                <h2>Borrar <%= brand.alias %>
+                                </h2>
+                            </button>
+                        </form>
+                        <hr>
+                        <% }) %>
+                </ul>
+            </main>
+    </body>
+
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head', {title: 'Usuarios'}) %>
+
+
+
+<body>
+    <%- include('./partials/header') %> 
+    <main>
+        <h1>USUARIOS <%= users.length %> </h1>
+    <ul class="users-list">
+        <% users.forEach(user=> { %>
+            <%- include('./partials/user-list-item.ejs', {user: user}) %>  
+        <% }) %>
+    </ul>
+    </main>
+</body>
+</html>

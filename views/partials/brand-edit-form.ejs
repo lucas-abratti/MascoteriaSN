@@ -1,0 +1,16 @@
+<form action="/marcas/editar-marca/<%= brand.id %>" method="post">
+    <section>
+
+        <h1>Editar Marca <%= brand.alias %></h1>
+        <p>
+            <label for="alias">Nombre de Marca</label>
+            <input type="text" name="alias" id="alias" value="<%= brand.alias %> ">
+        </p>
+        <p class="form-buttons">
+            <input value="Editar" type="submit" class="rs-form" id="submit">
+            <input type="reset" class="rs-form" id="reset">
+        </p>
+
+
+    </section>
+</form>

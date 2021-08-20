@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head', {title: 'Detalle de Pedido'}) %>
+
+<body>
+    <%- include('./partials/header') %> 
+    <main>
+        <%- include('./partials/order-list-item.ejs', {fullOrder: order}) %> 
+    </main>   
+</body>
+</html>

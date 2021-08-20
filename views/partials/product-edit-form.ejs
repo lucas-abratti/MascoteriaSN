@@ -1,0 +1,72 @@
+<form action="/productos/editar-producto/<%= product.id %>" method="post">
+
+    <section>
+
+        <h1>Editar Producto <%= product.alias %> </h1>
+        <p>
+            <label for="alias">Nombre del Producto</label>
+            <input type="text" name="alias" id="alias" value="<%= product.alias %>">
+        </p>
+
+        <p>
+            <label for="weight">Peso Kg</label>
+            <input type="number" name="weight" id="weight" value="<%= product.weight %>">
+        </p>
+
+        <p>
+            <label for="price_kg">Precio por Kg</label>
+            <input type="number" name="price_kg" id="price_kg" value="<%= product.price_kg %>">
+        </p>
+        <p>
+            <label for="price_bagCash">Precio por Bolsa en efectivo</label>
+            <input type="number" name="price_bagCash" id="price_bagCash" value="<%= product.price_bagCash %>">
+        </p>
+        <p>
+            <label for="price_bagCard">Precio por Bolsa con tarjeta (Credito/Debito)</label>
+            <input type="number" name="price_bagCard" id="price_bagCard" value="<%= product.price_bagCard %>">
+        </p>
+        <p>
+            <label for="category_id">Categoria</label>
+            <select name="category_id" id="category_id">
+                <option value="<%= product.category_id %>">
+                    Default: <%= categories[product.category_id - 1].alias %>
+                </option>
+                <% for( let i=0; i < categories.length; i++ ) { %>
+                    <option value="<%= categories[i].id %>">
+                        <%= categories[i].alias %>
+                    </option>
+                    <% } %>
+            </select>
+        </p>
+
+        <p>
+            <label for="brand_id">Marca</label>
+            <select name="brand_id" id="brand_id">
+                <option value="<%= product.brand_id %>">
+                    Default: <%= brands[product.brand_id - 1].alias %>
+                </option>
+                <% for( let i=0; i < brands.length; i++ ) { %>
+                    <option value="<%= brands[i].id %>">
+                        <%= brands[i].alias %>
+                    </option>
+                    <% } %>
+            </select>
+        </p>
+
+        <p>
+            <label for="img">Imagen del Producto</label>
+            <input type="text" name="img" id="img" value="<%= product.img %>">
+        </p>
+
+        <p>
+            <label for="info">Descripcion del Producto</label>
+            <input type="text" name="info" id="info" value="<%= product.info %>">
+        </p>
+
+        <p>
+            <input value="Editar" type="submit" id="submit">
+            <input type="reset" id="reset">
+        </p>
+    </section>
+    
+</form>
