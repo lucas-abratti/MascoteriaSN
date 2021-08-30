@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<%- include('./partials/head', {title: 'Registrar Usuario'}) %>
+
+    
+<body>
+    <%- include('./partials/header') %>
+    <% if(messages.error) {%>
+        <%= messages.error %> 
+    <% } %>  
+    <main>
+        <%- include('./partials/user-create-form') %> 
+    </main>
+</body>
+</html>

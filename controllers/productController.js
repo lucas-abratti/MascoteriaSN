@@ -36,7 +36,8 @@ const controller = {
             .then(([categories, brands]) => {
                 res.render('product-create', { categories: categories, brands: brands })
             }).catch(error => {
-                res.render('error', { error: error, message: 'UPS! Ha ocurrido un error!' })
+                req.flash('msg', 'Ha ocurrido un error')
+                res.redirect("/productos")
             })
     },
 
@@ -49,7 +50,8 @@ const controller = {
                 .then(([product, categories, brands]) => {
                     res.render('product-edit', { product: product, categories: categories, brands: brands })
                 }).catch(error => {
-                    res.render('error', { error: error, message: 'UPS! Ha ocurrido un error!' })
+                    req.flash('msg', `Ha ocurido un error ${error}`)
+                    res.redirect("/productos")
                 })
     },
 
@@ -64,7 +66,8 @@ const controller = {
         }).then(product => {
             res.redirect(`/productos/detalle-de-producto/${product.id}`)
         }).catch(error => {
-            res.render('error', { error: error, message: 'UPS! Ha ocurrido un error!' })
+            req.flash('msg', `Ha ocurido un error y el producto no ha sido creado ${error}`)
+            res.redirect("/productos")
         })
     },
 
@@ -83,10 +86,12 @@ const controller = {
             where: {
                 id: req.params.id
             }
-        }).then(product => {
-            res.redirect("/productos")
+        }).then( product => {
+            req.flash('msg', `Producto actualizado con éxito`)
+            res.redirect(`/productos`)
         }).catch(error => {
-            res.render('error', { error: error, message: 'UPS! Ha ocurrido un error!' })
+            req.flash('msg', 'Ha ocurrido un error y el producto no ha sido actualizado')
+            res.redirect("/productos")
         })
     },
 
@@ -96,6 +101,7 @@ const controller = {
                 id: req.params.id
             }
         }).then(
+            req.flash('msg', 'El producto ha sido eliminado satisfactoriamente'),
             res.redirect('/productos')
         )
     }

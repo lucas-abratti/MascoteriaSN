@@ -1,4 +1,5 @@
 const db = require('../db/models');
+const passport = require('passport')
 
 const controller = {
 
@@ -30,29 +31,33 @@ const controller = {
 
     createUser: (req, res) => {
 
-        // PENDIENTE LOGIN Y REGISTER FORM
-
-        let userRequest = db.User.findByPk(req.params.id);
         let categoriesRequest = db.Category.findAll();
         let brandsRequest = db.Brand.findAll();
 
-        Promise.all([userRequest, categoriesRequest, brandsRequest])
-            .then(([user, categories, brands]) => {
-                res.render('users-detail', { user: user, categories: categories, brands: brands })
+        Promise.all([categoriesRequest, brandsRequest])
+            .then(([categories, brands]) => {
+                res.render('user-register', {categories: categories, brands: brands })
             }).catch(error => {
                 res.render('error', { error: error, message: 'UPS! Ha ocurrido un error!' })
             })
     },
 
-    saveUser: (req, res) => {
-        db.User.create({
-            alias: req.body.alias,
-            adress: req.body.adress,
-        }).then(
-            res.redirect('/usuarios')
-        ).catch(error => {
-            res.render('error', { error: error, message: 'UPS! Ha ocurrido un error!' })
-        })
+    loginUser: (req, res) => {
+        
+        let categoriesRequest = db.Category.findAll();
+        let brandsRequest = db.Brand.findAll();
+
+        Promise.all([categoriesRequest, brandsRequest])
+            .then(([categories, brands]) => {
+                res.render('user-login', {categories: categories, brands: brands })
+            }).catch(error => {
+                res.render('error', { error: error, message: 'UPS! Ha ocurrido un error!' })
+            })
+    },
+
+    logout: (req, res) => {
+        req.logOut();
+        res.redirect('login')
     }
 
 }

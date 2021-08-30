@@ -3,52 +3,74 @@
         <div id="dl-menu" class="dl-menuwrapper">
             <button class="dl-trigger">Open Menu</button>
             <ul class="dl-menu">
-                <li><a href="/">Home</a></li>
-                <li>
-                    <a href="/categorias">Categorias</a>
-                    <ul class="dl-submenu">
-                        <% categories.forEach(category=> { %>
-                            <li><a href="/categorias/detalle-de-categoria/<%=category.id%>">
-                                    <%= category.alias %>
-                                </a></li>
-                            <% }) %>
-                    </ul>
-                </li>
-                <li>
-                    <a href="/marcas">Marcas</a>
-                    <ul class="dl-submenu">
-                        <% brands.forEach(brand=> { %>
-                            <li><a href="/marcas/detalle-de-marca/<%=brand.id%>">
-                                    <%= brand.alias %>
-                                </a></li>
-                            <% }) %>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Panel de Control</a>
-                    <ul class="dl-submenu">
-                        <li><a href="/productos/crear-producto">Crear</a>
+                    <li>
+                        <a href="#">Cuenta</a>
+                        <% if (user) { %>
                             <ul class="dl-submenu">
-                                <li><a href="/productos/crear-producto">Crear Producto</a></li>
-                                <li><a href="/marcas/crear-marca">Crear Marca</a></li>
-                                <li><a href="/categorias/crear-categoria">Crear Categoria</a></li>
-                                <li><a href="/usuarios/crear-usuario/1">Crear Usuario</a></li>
+                                <li><a href="/usuarios/detalle-de-usuario/<%= user.id %> ">Perfil</a></li>
+                                <li><a href="/usuarios/logout">LogOut</a></li>
+                            </ul>
+                        <% }else{ %> 
+                            <ul class="dl-submenu">
+                                <li><a href="/usuarios/sing-in">Crear una cuenta</a></li>
+                                <li><a href="/usuarios/login">Ingresar</a></li>
+                            </ul>
+                        <% } %> 
+                    </li>
+                        <li><a href="/">Home</a></li>
+                        <li>
+                            <a href="/categorias">Categorias</a>
+                            <ul class="dl-submenu">
+                                <% categories.forEach(category=> { %>
+                                    <li><a href="/categorias/detalle-de-categoria/<%=category.id%>">
+                                            <%= category.alias %>
+                                        </a></li>
+                                    <% }) %>
                             </ul>
                         </li>
-                        <li><a href="/usuarios/crear-usuario/1">Editar / Borrar</a>
+                        <li>
+                            <a href="/marcas">Marcas</a>
                             <ul class="dl-submenu">
-                                <li><a href="/editar-productos">Editar Producto</a></li>
-                                <li><a href="/editar-marcas">Editar Marca</a></li>
-                                <li><a href="/editar-categorias">Editar Categoria</a></li>
-                                <li><a href="/editar-usuario/1">Editar Usuario</a></li>
-                            </ul></li>
+                                <% brands.forEach(brand=> { %>
+                                    <li><a href="/marcas/detalle-de-marca/<%=brand.id%>">
+                                            <%= brand.alias %>
+                                        </a></li>
+                                    <% }) %>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Panel de Control</a>
+                            <ul class="dl-submenu">
+                                <li><a href="#">Crear</a>
+                                    <ul class="dl-submenu">
+                                        <li><a href="/productos/crear-producto">Crear Producto</a></li>
+                                        <li><a href="/marcas/crear-marca">Crear Marca</a></li>
+                                        <li><a href="/categorias/crear-categoria">Crear Categoria</a></li>
+                                        <li><a href="/usuarios/crear-usuario">Crear Usuario</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Editar / Borrar</a>
+                                    <ul class="dl-submenu">
+                                        <li><a href="/editar-productos">Editar Producto</a></li>
+                                        <li><a href="/editar-marcas">Editar Marca</a></li>
+                                        <li><a href="/editar-categorias">Editar Categoria</a></li>
+                                        <li><a href="/editar-usuario/1">Editar Usuario</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="/productos">Productos</a></li>
+                        <li><a href="/usuarios">Usuarios</a></li>
                     </ul>
-                </li>
-                <li><a href="/productos">Productos</a></li>
-                <li><a href="/usuarios">Usuarios</a></li>
-            </ul>
         </div>
     </div>
 
     <div class="text"><a href="/">Abrojal Mascotas</a></div>
 </header>
+<div style="background-color: greenyellow; text-align: center;">
+    <% if (messages.msg) { %>
+        <p>
+            <%= messages.msg %>
+        </p>
+    <% } %>
+</div>

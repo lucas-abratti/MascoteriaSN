@@ -1,0 +1,24 @@
+<form action="/usuarios/login" method="POST">
+
+    <section>
+
+        <h1>Login de Usuario</h1>
+        <% if(messages.login) {%>
+            <p style="color:red"><%= messages.login %></p> 
+            <% console.log(messages) %> 
+        <% } %>  
+        <p>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Email">
+        </p>
+        <p>
+            <label for="password">Contraseña</label>
+            <input type="password" name="password" id="password" placeholder="Contraseña">
+        </p>
+
+        <p class="form-buttons">
+            <input value="LogIn!" type="submit" class="rs-form" id="submit">
+            <input type="reset" class="rs-form" id="reset">
+        </p>
+    </section>
+</form>

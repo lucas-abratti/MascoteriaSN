@@ -1,16 +1,30 @@
-    <form action="/usuarios/crear-usuario" method="post">
+    <form action="/usuarios/sing-in" method="POST">
 
         <section>
 
             <h1>Crear Usuario</h1>
+            <% if(messages.singin) {%>
+                <p style="color:red"><%= messages.singin %></p> 
+                <% console.log(messages) %> 
+            <% } %>  
             <p>
                 <label for="alias">Nombre y Apellido</label>
                 <input type="text" name="alias" id="alias" placeholder="Nombre y Apellido">
             </p>
 
             <p>
-                <label for="adress">Dirección</label>
-                <input type="text" name="adress" id="adress" placeholder="Dirección">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Email">
+            </p>
+
+            <p>
+                <label for="phoneNumber">Numero de telefono</label>
+                <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Numero de telefono">
+            </p>
+            
+            <p>
+                <label for="password">Contraseña</label>
+                <input type="password" name="password" id="password" placeholder="Contraseña">
             </p>
 
             <p class="form-buttons">

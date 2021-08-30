@@ -1,17 +1,22 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const session = require('express-session')
+const flash = require('express-flash')
 
-var mainRouter = require('./routes/mainRouter');
-var productRouter = require('./routes/productRouter');
-var userRouter = require('./routes/userRouter');
-var categoryRouter = require('./routes/categoryRouter');
-var brandRouter = require('./routes/brandRouter');
-var orderRouter = require('./routes/orderRouter');
+const mainRouter = require('./routes/mainRouter');
+const productRouter = require('./routes/productRouter');
+const userRouter = require('./routes/userRouter');
+const categoryRouter = require('./routes/categoryRouter');
+const brandRouter = require('./routes/brandRouter');
+const orderRouter = require('./routes/orderRouter');
+const passport = require('passport');
 
-var app = express();
+const app = express();
+require('./lib/passport')
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,8 +25,24 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: false 
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+// global variables
+app.use((req, res, next) => {
+  app.locals.user = req.user;
+  next()
+})
 
 app.use('/', mainRouter);
 app.use('/productos', productRouter);

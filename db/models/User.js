@@ -9,16 +9,28 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false,
             type: dataTypes.STRING(30)
         },
-        adress: {
+        email: {
             allowNull: false,
             type: dataTypes.STRING(200)
+        },
+        phoneNumber: {
+            allowNull: false,
+            type: dataTypes.STRING(15)
+        },
+        encryptedPassword: {
+            allowNull: false,
+            type: dataTypes.STRING(200)
+        },
+        activeOrder: {
+            type: dataTypes.BOOLEAN,
+            default: 0
         }
     };
     
 
     const config = {
         tablename: 'users',
-        timestamps: false
+        paranoid: true
     }
 
     const User = sequelize.define(alias, cols, config)
