@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head', {title: 'Pedidos'}) %>
+
+
+
+<body>
+    <%- include('./partials/header') %>
+    <main>
+        <h1>TUS PEDIDOS</h1>
+        <h2>Pedidos pendientes</h2>
+        <% if (activeOrder == null) { %>
+            <p>No tenes pedidos pendientes</p>
+        <% }else{ %>
+            <%- include('./partials/order-list-item.ejs', {fullOrder: activeOrder}) %>
+            <a href="/pedidos/confirmar-pedido"><button>Confirmar Pedido</button></a>
+            <form action="/pedidos/eliminar-pedido/<%= activeOrder.id %>" method="post"><button>Cancelar Pedido</button></form>
+            <a href="/pedidos/editar-pedido/<%= activeOrder.id %> "><button>Editar Pedido</button></a>
+        <% } %>
+        <h2>Pedidos confirmados</h2>
+        <% if (orders == '' ||orders == null || orders == [] ) { %>
+            <p>No tenes pedidos confirmados</p>
+        <% }else{ %> 
+            <% orders.forEach(order=> { %>
+                <%- include('./partials/order-list-item.ejs', {fullOrder: order}) %> 
+            <% }) %>
+        <% } %>
+
+    </main>   
+</body>
+</html>

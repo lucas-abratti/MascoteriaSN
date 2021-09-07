@@ -28,11 +28,14 @@
                 <%= categories[product.category_id - 1].alias %>
             </a>
         </p>
-        <form action="/productos/editar-producto/<%= product.id %>" method="get">
-            <button class="edit-button" type="submit">Editar</button>
-        </form>
-        <form action="/productos/borrar-producto/<%= product.id %>" method="post">
-            <button class="edit-button" type="submit">Borrar</button>
-        </form>
+        <% if (user && user.clearance == 'administrador') { %>
+            <form action="/productos/editar-producto/<%= product.id %>" method="get">
+                <button class="edit-button" type="submit">Editar</button>
+            </form>
+            <form action="/productos/borrar-producto/<%= product.id %>" method="post">
+                <button class="edit-button" type="submit">Borrar</button>
+            </form>
+        <% } %>
+        
     </a>
 </li>

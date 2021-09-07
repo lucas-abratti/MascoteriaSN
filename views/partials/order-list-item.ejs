@@ -1,9 +1,14 @@
 <li class="order-list-item">
     <a href="/pedidos/detalle-de-pedido/<%=fullOrder.id%>">
-        <h2>
+        <h3>
             Pedido de <%= users[fullOrder.user_id - 1].alias %>
-        </h2>
-        <div style="display: flex;  flex-wrap: wrap; justify-content: flex-start;">
+        </h3>
+        <% if (fullOrder.listing_status == 'confirmado') { %>
+         <h5 style="background-color: greenyellow; padding: 5px 2px;">Pedido Confirmado</h5>
+        <% }else if(fullOrder.listing_status == 'a confirmar') {%>
+        <h5 style="background-color: orange; padding: 5px 2px;">Pedido a confirmar</h5>
+        <% } %>
+        <div style="display: flex;  flex-wrap: wrap; justify-content: flex-start; ">
             <% let orderedProducts = fullOrder.products.split(',') %>
             <% orderedProducts.forEach(order => { %>
                 <% let orderedProductId = order.split(' ') %>

@@ -24,6 +24,10 @@ module.exports = (sequelize, dataTypes) => {
         activeOrder: {
             type: dataTypes.BOOLEAN,
             default: 0
+        },
+        clearance: {
+            type: dataTypes.STRING(30),
+            default: 'cliente'
         }
     };
     

@@ -1,0 +1,17 @@
+<section class="order-list-item">
+
+    <h1>Editar pedido <%= fullOrder.products %></h1>
+    <% let orderedProducts = fullOrder.products.split(',') %>
+    <% orderedProducts.forEach((order, i)=> { %>
+        <% let orderedProductId=order.split(' ') %>
+        <% let orderedProduct = products[orderedProductId[1] - 1] %>
+        <div style="margin-right: 2%;">
+            <form action="/pedidos/eliminar-producto-de-pedido/<%= fullOrder.id %>/<%= i %>  " method="post">
+                <a href="/productos/detalle-de-producto/<%= orderedProduct.id %> "><img src="/images/<%= orderedProduct.img %>" alt="" width="80px">
+                <p><%= `${orderedProductId[0]} de ${orderedProduct.alias}` %> </p></a>
+                <button type="submit">Remover producto del pedido</button>   
+            </form>
+        </div>
+    <% }) %>
+
+</section>

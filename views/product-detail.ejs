@@ -25,39 +25,6 @@
                         </a></p>
                     </span>
                 </div>
-                <% if (undefined == user) { %>
-                    <h1>User == undefined </h1>
-                    <span class="buying-options">
-                        <div class="buying-option">
-                            <h3>Precio por KG <%= product.price_kg %>$</h3>
-                            <form action="/pedidos/crear-pedido/<%= product.id %> " method="post" enctype="application/x-www-form-urlencoded">
-                                <label for="order_kg">Comprar</label>
-                                <input type="number" name="order_kg" id="order_kg" value="0">
-                                <label>kg</label>
-                                <button type="submit">✅Agregar al pedido✅</button>
-                            </form>
-                        </div>
-                        <div class="buying-option">
-                            <h3>Bolsa en efectivo(<%= product.weight %>kg) <%= product.price_bagCash %>$</h3>
-                            <form action="/pedidos/crear-pedido/<%= product.id %> " method="post" enctype="application/x-www-form-urlencoded">
-                                <label for="order_bagCash">Comprar</label>
-                                <input type="number" name="order_bagCash" id="order_bagCash" value="0">
-                                <label>bolsas</label>
-                                <button type="submit">✅Agregar al pedido✅</button>
-                            </form>
-                        </div>
-                        <div class="buying-option">
-                            <h3>Bolsa con Credito/Debito(<%= product.weight %>kg) <%= product.price_bagCard %>$</h3>
-                            <form action="/pedidos/crear-pedido/<%= product.id %> " method="post" enctype="application/x-www-form-urlencoded">
-                                <label for="order_bagCard">Comprar</label>
-                                <input type="number" name="order_bagCard" id="order_bagCard" value="0">
-                                <label>bolsas</label>
-                                <button type="submit">✅Agregar al pedido✅</button>
-                            </form>
-                        </div>
-                    </span>
-                <% }else if(user.activeOrder){ %>
-                    <h1>user active order true<%= user.activeOrder %> </h1>
                     <span class="buying-options">
                         <div class="buying-option">
                             <h3>Precio por KG <%= product.price_kg %>$</h3>
@@ -87,38 +54,6 @@
                             </form>
                         </div>
                     </span>
-                <% } else{ %>
-                    <h1>user active order false <%= user.activeOrder %> </h1>
-                    <span class="buying-options">
-                        <div class="buying-option">
-                            <h3>Precio por KG <%= product.price_kg %>$</h3>
-                            <form action="/pedidos/crear-pedido/<%= product.id %> " method="post" enctype="application/x-www-form-urlencoded">
-                                <label for="order_kg">Comprar</label>
-                                <input type="number" name="order_kg" id="order_kg" value="0">
-                                <label>kg</label>
-                                <button type="submit">✅Agregar al pedido✅</button>
-                            </form>
-                        </div>
-                        <div class="buying-option">
-                            <h3>Bolsa en efectivo(<%= product.weight %>kg) <%= product.price_bagCash %>$</h3>
-                            <form action="/pedidos/crear-pedido/<%= product.id %> " method="post" enctype="application/x-www-form-urlencoded">
-                                <label for="order_bagCash">Comprar</label>
-                                <input type="number" name="order_bagCash" id="order_bagCash" value="0">
-                                <label>bolsas</label>
-                                <button type="submit">✅Agregar al pedido✅</button>
-                            </form>
-                        </div>
-                        <div class="buying-option">
-                            <h3>Bolsa con Credito/Debito(<%= product.weight %>kg) <%= product.price_bagCard %>$</h3>
-                            <form action="/pedidos/crear-pedido/<%= product.id %> " method="post" enctype="application/x-www-form-urlencoded">
-                                <label for="order_bagCard">Comprar</label>
-                                <input type="number" name="order_bagCard" id="order_bagCard" value="0">
-                                <label>bolsas</label>
-                                <button type="submit">✅Agregar al pedido✅</button>
-                            </form>
-                        </div>
-                    </span>
-                <% } %>
             </div>
         </main>
     </body>
